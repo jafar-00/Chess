@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="board_design.css">
+</head>
+
+<body>
+    <div id="board">
+
+        <span onclick="CLICKED(this , 0)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 1)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 2)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 3)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 4)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 5)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 6)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 7)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 8)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 9)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 10)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 11)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 12)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 13)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 14)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 15)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 16)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 17)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 18)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 19)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 20)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 21)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 22)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 23)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 24)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 25)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 26)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 27)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 28)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 29)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 30)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 31)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 32)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 33)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 34)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 35)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 36)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 37)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 38)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 39)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 40)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 41)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 42)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 43)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 44)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 45)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 46)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 47)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 48)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 49)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 50)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 51)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 52)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 53)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 54)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 55)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 56)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 57)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 58)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 59)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 60)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 61)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 62)"><img src="" alt=""></span>
+        <span onclick="CLICKED(this , 63)"><img src="" alt=""></span>
+    </div>
+
+    <script>
+        var grid_span = document.getElementById("board").getElementsByTagName("span");
+        var p = 0;
+
+        for (var i = 0; i < grid_span.length; i++) {
+            p ^= 1;
+            if (i % 8 == 0) p ^= 1;
+
+            if (p == 1) {
+                grid_span[i].style.backgroundColor = "#CB7435";
+            }
+            else {
+                grid_span[i].style.backgroundColor = "lavender";
+            }
+
+            grid_span[i].style.boxShadow = "none";
+        }
+
+
+        grids = document.getElementById("board").querySelectorAll("img");
+
+        //setting black
+        grids[0].src = grids[7].src = "b_rook.png";
+        grids[1].src = grids[6].src = "b_knight.png";
+        grids[2].src = grids[5].src = "b_bishop.png";
+        grids[3].src = "b_queen.png";
+        grids[4].src = "b_king.png";
+        for (var i = 8; i < 16; i++) grids[i].src = "b_pawn.png";
+
+        //setting white
+        grids[56].src = grids[63].src = "w_rook.png";
+        grids[57].src = grids[62].src = "w_knight.png";
+        grids[58].src = grids[61].src = "w_bishop.png";
+        grids[59].src = "w_queen.png";
+        grids[60].src = "w_king.png";
+        for (var i = 48; i < 56; i++) grids[i].src = "w_pawn.png";
+
+        //setting empty
+        for (var i = 16; i < 48; i++) grids[i].src = "empty.png";
+
+        var TURN = 1;
+        var wking_pos = 60;
+        var bking_pos = 4;
+
+        var backup_item = "empty.png";
+        var backup_pos = 0;
+        var CHK = -1;
+
+        var moved_0 = false;
+        var moved_4 = false;
+        var moved_7 = false;
+        var moved_56 = false;
+        var moved_63 = false;
+        var moved_60 = false;
+
+        var THERE = false;
+        var alive = 32;
+
+        function source(bx) {
+            var len = bx.length;
+
+            return bx.substring(42, len - 4);
+        }
+
+        function is_in_check(col) {
+            var ind;
+            if (col == 'w') ind = wking_pos;
+            else ind = bking_pos;
+
+            var val = Math.abs(wking_pos - bking_pos);
+            if (val == 1 || val == 8 || val == 9 || val == 7) return true;
+
+            if (col == 'w') {
+                if (ind - 9 >= 0 && (ind - 9) % 8 != 7 && source(grids[ind - 9].src) == "b_pawn") return true;
+                if (ind - 7 >= 0 && (ind - 7) % 8 != 0 && source(grids[ind - 7].src) == "b_pawn") return true;
+
+            }
+            if (col == 'b') {
+                if (ind + 9 <= 63 && (ind + 9) % 8 != 0 && source(grids[ind + 9].src) == "w_pawn") return true;
+                if (ind + 7 <= 63 && (ind + 7) % 8 != 7 && source(grids[ind + 7].src) == "w_pawn") return true;
+            }
+
+            var i;
+            //upside
+            i = ind - 8;
+            while (i >= 0 && (source(grids[i].src) == "empty" || source(grids[i].src) == "circle")) i -= 8;
+            if (col == 'w') {
+                if (i >= 0 && (source(grids[i].src) == "b_rook" || source(grids[i].src) == "b_queen")) return true;
+            }
+            if (col == 'b') {
+                if (i >= 0 && (source(grids[i].src) == "w_rook" || source(grids[i].src) == "w_queen")) return true;
+            }
+
+            //downside
+            i = ind + 8;
+            while (i <= 63 && (source(grids[i].src) == "empty" || source(grids[i].src) == "circle")) i += 8;
+            if (col == 'w') {
+                if (i <= 63 && (source(grids[i].src) == "b_rook" || source(grids[i].src) == "b_queen")) return true;
+            }
+            if (col == 'b') {
+                if (i <= 63 && (source(grids[i].src) == "w_rook" || source(grids[i].src) == "w_queen")) return true;
+            }
+
+            //rightside
+            i = ind + 1;
+            while (i % 8 != 0 && (source(grids[i].src) == "empty" || source(grids[i].src) == "circle")) i++;
+            if (col == 'w') {
+                if (i % 8 != 0 && (source(grids[i].src) == "b_rook" || source(grids[i].src) == "b_queen")) return true;
+            }
+            if (col == 'b') {
+                if (i % 8 != 0 && (source(grids[i].src) == "w_rook" || source(grids[i].src) == "w_queen")) return true;
+            }
+
+            //leftside
+            i = ind - 1;
+            while (i >= 0 && i % 8 != 7 && (source(grids[i].src) == "empty" || source(grids[i].src) == "circle")) i--;
+            if (col == 'w') {
+                if (i >= 0 && i % 8 != 7 && (source(grids[i].src) == "b_rook" || source(grids[i].src) == "b_queen")) return true;
+            }
+            if (col == 'b') {
+                if (i >= 0 && i % 8 != 7 && (source(grids[i].src) == "w_rook" || source(grids[i].src) == "w_queen")) return true;
+            }
+
+            //upright side
+            i = ind - 7;
+            while (i >= 0 && i % 8 != 0 && (source(grids[i].src) == "empty" || source(grids[i].src) == "circle")) i -= 7;
+            if (col == 'w') {
+                if (i >= 0 && i % 8 != 0 && (source(grids[i].src) == "b_bishop" || source(grids[i].src) == "b_queen")) return true;
+            }
+            if (col == 'b') {
+                if (i >= 0 && i % 8 != 0 && (source(grids[i].src) == "w_bishop" || source(grids[i].src) == "w_queen")) return true;
+            }
+
+            //upleft side
+            i = ind - 9;
+            while (i >= 0 && i % 8 != 7 && (source(grids[i].src) == "empty" || source(grids[i].src) == "circle")) i -= 9;
+            if (col == 'w') {
+                if (i >= 0 && i % 8 != 7 && (source(grids[i].src) == "b_bishop" || source(grids[i].src) == "b_queen")) return true;
+            }
+            if (col == 'b') {
+                if (i >= 0 && i % 8 != 7 && (source(grids[i].src) == "w_bishop" || source(grids[i].src) == "w_queen")) return true;
+            }
+
+            //downright side
+            i = ind + 9;
+            while (i <= 63 && i % 8 != 0 && (source(grids[i].src) == "empty" || source(grids[i].src) == "circle")) i += 9;
+            if (col == 'w') {
+                if (i <= 63 && i % 8 != 0 && (source(grids[i].src) == "b_bishop" || source(grids[i].src) == "b_queen")) return true;
+            }
+            if (col == 'b') {
+                if (i <= 63 && i % 8 != 0 && (source(grids[i].src) == "w_bishop" || source(grids[i].src) == "w_queen")) return true;
+            }
+
+            //downleft side
+            i = ind + 7;
+            while (i <= 63 && i % 8 != 7 && (source(grids[i].src) == "empty" || source(grids[i].src) == "circle")) i += 7;
+            if (col == 'w') {
+                if (i <= 63 && i % 8 != 7 && (source(grids[i].src) == "b_bishop" || source(grids[i].src) == "b_queen")) return true;
+            }
+            if (col == 'b') {
+                if (i <= 63 && i % 8 != 7 && (source(grids[i].src) == "w_bishop" || source(grids[i].src) == "w_queen")) return true;
+            }
+
+            //horseeeee
+            var tar;
+            var val;
+
+            tar = ind - 17;
+            if (tar >= 0 && ind % 8 != 0) {
+                val = source(grids[tar].src);
+                if (col == 'b' && val == "w_knight") return true;
+                if (col == 'w' && val == "b_knight") return true;
+            }
+            tar = ind - 15;
+            if (tar >= 0 && ind % 8 != 7) {
+                val = source(grids[tar].src);
+                if (col == 'b' && val == "w_knight") return true;
+                if (col == 'w' && val == "b_knight") return true;
+            }
+            tar = ind - 6;
+            if (tar >= 0 && ind % 8 <= 5) {
+                val = source(grids[tar].src);
+                if (col == 'b' && val == "w_knight") return true;
+                if (col == 'w' && val == "b_knight") return true;
+            }
+            tar = ind + 10;
+            if (tar <= 63 && ind % 8 <= 5) {
+                val = source(grids[tar].src);
+                if (col == 'b' && val == "w_knight") return true;
+                if (col == 'w' && val == "b_knight") return true;
+            }
+            tar = ind + 15;
+            if (tar <= 63 && ind % 8 != 0) {
+                val = source(grids[tar].src);
+                if (col == 'b' && val == "w_knight") return true;
+                if (col == 'w' && val == "b_knight") return true;
+            }
+            tar = ind + 17;
+            if (tar <= 63 && ind % 8 != 7) {
+                val = source(grids[tar].src);
+                if (col == 'b' && val == "w_knight") return true;
+                if (col == 'w' && val == "b_knight") return true;
+            }
+            tar = ind - 10;
+            if (tar >= 0 && ind % 8 >= 2) {
+                val = source(grids[tar].src);
+                if (col == 'b' && val == "w_knight") return true;
+                if (col == 'w' && val == "b_knight") return true;
+            }
+            tar = ind + 6;
+            if (tar <= 63 && ind % 8 >= 2) {
+                val = source(grids[tar].src);
+                if (col == 'b' && val == "w_knight") return true;
+                if (col == 'w' && val == "b_knight") return true;
+            }
+            return false;
+        }
+
+        function test(s, d, col) {
+            var pre = source(grids[s].src) + ".png";
+            var fut = source(grids[d].src) + ".png";
+
+            grids[s].src = "empty.png";
+            grids[d].src = pre;
+
+            if (pre == "w_king.png") wking_pos = d;
+            if (pre == "b_king.png") bking_pos = d;
+
+            var valid = true;
+            if (is_in_check(col)) valid = false;
+
+            grids[s].src = pre;
+            grids[d].src = fut;
+
+            if (pre == "w_king.png") wking_pos = s;
+            if (pre == "b_king.png") bking_pos = s;
+
+            if (valid) THERE = true;
+            return valid;
+        }
+
+        function extend_up(ind, col, path = 100) {
+            var s = ind + 8;
+            var sofar = 0;
+
+            while (sofar < path && ind >= 0 && source(grids[ind].src) == "empty") {
+
+                if (test(s, ind, col)) grids[ind].src = "circle.png";
+                ind = ind - 8;
+                sofar++;
+            }
+            if (ind < 0 || sofar == path) return;
+            if (col == source(grids[ind].src)[0]) return;
+
+            if (test(s, ind, col)) grid_span[ind].style.boxShadow = "inset 0 0 10px red";
+        }
+
+        function extend_down(ind, col, path = 100) {
+            var s = ind - 8;
+            var sofar = 0;
+
+            while (sofar < path && ind <= 63 && source(grids[ind].src) == "empty") {
+                if (test(s, ind, col)) grids[ind].src = "circle.png";
+
+                ind = ind + 8;
+                sofar++;
+            }
+            if (ind > 63 || sofar == path) return;
+            if (col == source(grids[ind].src)[0]) return;
+
+            if (test(s, ind, col)) grid_span[ind].style.boxShadow = "inset 0 0 10px red";
+        }
+
+        function extend_right(ind, col, path = 100) {
+            var s = ind - 1;
+            var sofar = 0;
+
+            while (sofar < path && ind % 8 != 0 && source(grids[ind].src) == "empty") {
+                if (test(s, ind, col)) grids[ind].src = "circle.png";
+
+                ind = ind + 1;
+                sofar++;
+            }
+            if (ind % 8 == 0 || sofar == path) return;
+            if (col == source(grids[ind].src)[0]) return;
+
+            if (test(s, ind, col)) grid_span[ind].style.boxShadow = "inset 0 0 10px red";
+        }
+
+        function extend_left(ind, col, path = 100) {
+            var s = ind + 1;
+            var sofar = 0;
+
+            while (sofar < path && ind >= 0 && ind % 8 != 7 && source(grids[ind].src) == "empty") {
+                if (test(s, ind, col)) grids[ind].src = "circle.png";
+
+                ind = ind - 1;
+                sofar++;
+            }
+            if (ind < 0 || ind % 8 == 7 || sofar == path) return;
+            if (col == source(grids[ind].src)[0]) return;
+
+            if (test(s, ind, col)) grid_span[ind].style.boxShadow = "inset 0 0 10px red";
+        }
+        function extend_upright(ind, col, path = 100) {
+            var s = ind + 7;
+            var sofar = 0;
+
+            while (sofar < path && ind >= 0 && ind % 8 != 0 && source(grids[ind].src) == "empty") {
+                if (test(s, ind, col)) grids[ind].src = "circle.png";
+
+                ind = ind - 7;
+                sofar++;
+            }
+            if (ind < 0 || ind % 8 == 0 || sofar == path) return;
+            if (col == source(grids[ind].src)[0]) return;
+
+            if (test(s, ind, col)) grid_span[ind].style.boxShadow = "inset 0 0 10px red";
+        }
+
+        function extend_upleft(ind, col, path = 100) {
+            var s = ind + 9;
+            var sofar = 0;
+
+            while (sofar < path && ind >= 0 && ind % 8 != 7 && source(grids[ind].src) == "empty") {
+                if (test(s, ind, col)) grids[ind].src = "circle.png";
+
+                ind = ind - 9;
+                sofar++;
+            }
+            if (ind < 0 || ind % 8 == 7 || sofar == path) return;
+            if (col == source(grids[ind].src)[0]) return;
+
+            if (test(s, ind, col)) grid_span[ind].style.boxShadow = "inset 0 0 10px red";
+        }
+
+        function extend_downright(ind, col, path = 100) {
+            var s = ind - 9;
+            var sofar = 0;
+
+            while (sofar < path && ind <= 63 && ind % 8 != 0 && source(grids[ind].src) == "empty") {
+                if (test(s, ind, col)) grids[ind].src = "circle.png";
+
+                ind = ind + 9;
+                sofar++;
+            }
+            if (ind > 63 || ind % 8 == 0 || sofar == path) return;
+            if (col == source(grids[ind].src)[0]) return;
+
+            if (test(s, ind, col)) grid_span[ind].style.boxShadow = "inset 0 0 10px red";
+        }
+
+        function extend_downleft(ind, col, path = 100) {
+            var s = ind - 7;
+            var sofar = 0;
+
+            while (sofar < path && ind <= 63 && ind % 8 != 7 && source(grids[ind].src) == "empty") {
+                if (test(s, ind, col)) grids[ind].src = "circle.png";
+
+                ind = ind + 7;
+                sofar++;
+            }
+            if (ind > 63 || ind % 8 == 7 || sofar == path) return;
+            if (col == source(grids[ind].src)[0]) return;
+
+            if (test(s, ind, col)) grid_span[ind].style.boxShadow = "inset 0 0 10px red";
+        }
+
+        function extend_horse(ind, col) {
+            var tar;
+            var val;
+            tar = ind - 17;
+            if (tar >= 0 && ind % 8 != 0) {
+                val = source(grids[tar].src);
+
+                if (test(ind, tar, col)) {
+                    if (val == "empty") grids[tar].src = "circle.png";
+                    else if (col != val[0]) grid_span[tar].style.boxShadow = "inset 0 0 10px red";
+                }
+            }
+            tar = ind - 15;
+            if (tar >= 0 && ind % 8 != 7) {
+                val = source(grids[tar].src);
+                if (test(ind, tar, col)) {
+                    if (val == "empty") grids[tar].src = "circle.png";
+                    else if (col != val[0]) grid_span[tar].style.boxShadow = "inset 0 0 10px red";
+                }
+            }
+            tar = ind - 6;
+            if (tar >= 0 && ind % 8 <= 5) {
+                val = source(grids[tar].src);
+                if (test(ind, tar, col)) {
+                    if (val == "empty") grids[tar].src = "circle.png";
+                    else if (col != val[0]) grid_span[tar].style.boxShadow = "inset 0 0 10px red";
+                }
+            }
+            tar = ind + 10;
+            if (tar <= 63 && ind % 8 <= 5) {
+                val = source(grids[tar].src);
+                if (test(ind, tar, col)) {
+                    if (val == "empty") grids[tar].src = "circle.png";
+                    else if (col != val[0]) grid_span[tar].style.boxShadow = "inset 0 0 10px red";
+                }
+            }
+            tar = ind + 15;
+            if (tar <= 63 && ind % 8 != 0) {
+                val = source(grids[tar].src);
+                if (test(ind, tar, col)) {
+                    if (val == "empty") grids[tar].src = "circle.png";
+                    else if (col != val[0]) grid_span[tar].style.boxShadow = "inset 0 0 10px red";
+                }
+            }
+            tar = ind + 17;
+            if (tar <= 63 && ind % 8 != 7) {
+                val = source(grids[tar].src);
+                if (test(ind, tar, col)) {
+                    if (val == "empty") grids[tar].src = "circle.png";
+                    else if (col != val[0]) grid_span[tar].style.boxShadow = "inset 0 0 10px red";
+                }
+            }
+            tar = ind - 10;
+            if (tar >= 0 && ind % 8 >= 2) {
+                val = source(grids[tar].src);
+                if (test(ind, tar, col)) {
+                    if (val == "empty") grids[tar].src = "circle.png";
+                    else if (col != val[0]) grid_span[tar].style.boxShadow = "inset 0 0 10px red";
+                }
+            }
+            tar = ind + 6;
+            if (tar <= 63 && ind % 8 >= 2) {
+                val = source(grids[tar].src);
+                if (test(ind, tar, col)) {
+                    if (val == "empty") grids[tar].src = "circle.png";
+                    else if (col != val[0]) grid_span[tar].style.boxShadow = "inset 0 0 10px red";
+                }
+            }
+        }
+
+
+
+        function clean_wash() {
+            for (var i = 0; i < 64; i++) {
+                grid_span[i].style.boxShadow = "none";
+                if (source(grids[i].src) == "circle") grids[i].src = "empty.png";
+            }
+        }
+
+        function verify(l, r, col) {
+            for (var i = l; i <= r; i++) {
+
+                if (source(grids[i].src) != "empty" && source(grids[i].src) != "circle") return false;
+
+                if (col == 'w') wking_pos = i;
+                else bking_pos = i;
+
+                if (is_in_check(col)) return false;
+            }
+
+            return true;
+        }
+
+        function is_checkmate(col) {
+            THERE = false;
+
+            for (var i = 0; i < 64; i++) {
+                if (col != source(grids[i].src)[0]) continue;
+                var piece = source(grids[i].src).substring(2);
+
+                if (piece == "queen") {
+                    extend_up(i - 8, col);
+                    if (THERE) {
+                        clean_wash();
+                        if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+                        return false;
+                    }
+                    extend_down(i + 8, col);
+                    if (THERE) {
+                        clean_wash();
+                        if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+                        return false;
+                    }
+                    extend_right(i + 1, col);
+                    if (THERE) {
+                        clean_wash();
+                        if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+                        return false;
+                    }
+                    extend_left(i - 1, col);
+                    if (THERE) {
+                        clean_wash();
+                        if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+                        return false;
+                    }
+
+                    extend_upright(i - 7, col);
+                    if (THERE) {
+                        clean_wash();
+                        if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+                        return false;
+                    }
+                    extend_upleft(i - 9, col);
+                    if (THERE) {
+                        clean_wash();
+                        if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+                        return false;
+                    }
+                    extend_downleft(i + 7, col);
+                    if (THERE) {
+                        clean_wash();
+                        if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+                        return false;
+                    }
+                    extend_downright(i + 9, col);
+                    if (THERE) {
+                        clean_wash();
+                        if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+                        return false;
+                    }
+                }
+
+                else if (piece == "king") {
+
+                    extend_up(i - 8, col, 1);
+                    if (THERE) {
+                        clean_wash();
+                        if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+                        return false;
+                    }
+                    extend_down(i + 8, col, 1);
+                    if (THERE) {
+                        clean_wash();
+                        if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+                        return false;
+                    }
+                    extend_right(i + 1, col, 1);
+                    if (THERE) {
+                        clean_wash();
+                        if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+                        return false;
+                    }
+                    extend_left(i - 1, col, 1);
+                    if (THERE) {
+                        clean_wash();
+                        if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+                        return false;
+                    }
+
+                    extend_upright(i - 7, col, 1);
+                    if (THERE) {
+                        clean_wash();
+                        if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+                        return false;
+                    }
+                    extend_upleft(i - 9, col, 1);
+                    if (THERE) {
+                        clean_wash();
+                        if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+                        return false;
+                    }
+                    extend_downleft(i + 7, col, 1);
+                    if (THERE) {
+                        clean_wash();
+                        if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+                        return false;
+                    }
+                    extend_downright(i + 9, col, 1);
+                    if (THERE) {
+                        clean_wash();
+                        if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+                        return false;
+                    }
+                }
+                else if (piece == "rook") {
+                    extend_up(i - 8, col);
+                    if (THERE) {
+                        clean_wash();
+                        if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+                        return false;
+                    }
+                    extend_down(i + 8, col);
+                    if (THERE) {
+                        clean_wash();
+                        if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+                        return false;
+                    }
+                    extend_right(i + 1, col);
+                    if (THERE) {
+                        clean_wash();
+                        if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+                        return false;
+                    }
+                    extend_left(i - 1, col);
+                    if (THERE) {
+                        clean_wash();
+                        if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+                        return false;
+                    }
+                }
+                else if (piece == "knight") {
+                    extend_horse(i, col);
+                    if (THERE) {
+                        clean_wash();
+                        if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+                        return false;
+                    }
+                }
+                else if (piece == "bishop") {
+                    extend_upright(i - 7, col);
+                    if (THERE) {
+                        clean_wash();
+                        if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+                        return false;
+                    }
+                    extend_upleft(i - 9, col);
+                    if (THERE) {
+                        clean_wash();
+                        if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+                        return false;
+                    }
+                    extend_downleft(i + 7, col);
+                    if (THERE) {
+                        clean_wash();
+                        if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+                        return false;
+                    }
+                    extend_downright(i + 9, col);
+                    if (THERE) {
+                        clean_wash();
+                        if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+                        return false;
+                    }
+                }
+                else {
+                    var posit = i;
+                    if (col == 'w') {
+
+                        if ((posit - 9) >= 0 && (posit - 9) % 8 != 7 && source(grids[posit - 9].src)[0] == 'b') {
+                            test(posit, posit - 9, col);
+                            if (THERE) return false;
+                        }
+                        if ((posit - 7) >= 0 && (posit - 7) % 8 != 0 && source(grids[posit - 7].src)[0] == 'b') {
+                            test(posit, posit - 7, col);
+                            if (THERE) return false;
+                        }
+                        if (source(grids[posit - 8].src) == "empty") {
+                            test(posit, posit - 8, col);
+                            if (THERE) return false;
+                        }
+                        else continue;
+
+                        if (posit >= 48 && posit < 56 && source(grids[posit - 16].src) == "empty") {
+                            test(posit, posit - 16, col);
+                            if (THERE) return false;
+                        }
+                    }
+                    else {
+                        if ((posit + 9) <= 63 && (posit + 9) % 8 != 0 && source(grids[posit + 9].src)[0] == 'w') {
+                            test(posit, posit + 9, col);
+                            if (THERE) return false;
+                        }
+                        if ((posit + 7) <= 63 && (posit + 7) % 8 != 7 && source(grids[posit + 7].src)[0] == 'w') {
+                            test(posit, posit + 7, col);
+                            if (THERE) return false;
+                        }
+                        if (source(grids[posit + 8].src) == "empty") {
+                            test(posit, posit + 8, col);
+                            if (THERE) return false;
+                        }
+                        else continue;
+
+                        if (posit >= 8 && posit < 16 && source(grids[posit + 16].src) == "empty") {
+                            test(posit, posit + 16, col);
+                            if (THERE) return false;
+                        }
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        function is_draw() {
+            for (var i = 0; i < 64; i++) {
+                var nm = source(grids[i].src).substring(2);
+                if (nm == "bishop" || nm == "knight") return true;
+            }
+            return false;
+        }
+
+        function CLICKED(ele, posit) {
+
+            var piece = source(grids[posit].src);
+            var col;
+            if (TURN == 1) col = 'w';
+            else col = 'b';
+
+            if (posit != CHK && (piece == "circle" || ele.style.boxShadow != "none")) {
+                if (ele.style.boxShadow != "none") alive--;
+
+                clean_wash();
+                if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+
+
+                grids[posit].src = backup_item;
+                grids[backup_pos].src = "empty.png";
+                TURN ^= 1;
+
+                if (source(grids[posit].src) == "w_king") {
+                    if (Math.abs(posit - wking_pos) == 2) {
+                        if (posit == 62) {
+                            grids[61].src = "w_rook.png";
+                            grids[63].src = "empty.png";
+                        }
+                        else {
+                            grids[59].src = "w_rook.png";
+                            grids[56].src = "empty.png";
+                        }
+                    }
+                    wking_pos = posit;
+
+                }
+                if (source(grids[posit].src) == "b_king") {
+                    if (Math.abs(posit - bking_pos) == 2) {
+                        if (posit == 6) {
+                            grids[5].src = "b_rook.png";
+                            grids[7].src = "empty.png";
+                        }
+                        else {
+                            grids[3].src = "b_rook.png";
+                            grids[0].src = "empty.png";
+                        }
+                    }
+                    bking_pos = posit;
+
+                }
+
+                if (backup_pos == 0) moved_0 = true;
+                if (backup_pos == 4) moved_4 = true;
+                if (backup_pos == 7) moved_7 = true;
+                if (backup_pos == 56) moved_56 = true;
+                if (backup_pos == 60) moved_60 = true;
+                if (backup_pos == 63) moved_63 = true;
+
+                if (source(grids[posit].src).substring(2) == "pawn") {
+                    if (col == 'w' && posit <= 7) grids[posit].src = "w_queen.png";
+                    else if (col == 'b' && posit >= 56) grids[posit].src = "b_queen.png";
+                }
+
+                if (CHK != -1) grid_span[CHK].style.boxShadow = "none";
+
+                if (col == 'w' && is_in_check('b')) CHK = bking_pos;
+                else if (col == 'b' && is_in_check('w')) CHK = wking_pos;
+                else CHK = -1;
+
+                if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+
+                if (col == 'w') col = 'b';
+                else col = 'w';
+
+                if (is_checkmate(col)) {
+                    if (col == 'w' && wking_pos == CHK) {
+                        alert("BLACK has defeated WHITE ...BLACK WINS !!");
+                    }
+                    else if (col == 'b' && bking_pos == CHK) {
+                        alert("WHITE has defeated BLACK ...WHITE WINS !!");
+                    }
+                    else {
+                        alert("STALE MATE !!");
+                    }
+                    location.reload();
+                }
+
+                if (alive == 2) {
+                    alert("DRAW MATCH !!");
+                    location.reload();
+                }
+
+                if (alive == 3) {
+                    if (is_draw()) {
+                        alert("DRAW MATCH !!");
+                        location.reload();
+                    }
+                }
+                return;
+
+            }
+
+            clean_wash();
+            if (CHK != -1) grid_span[CHK].style.boxShadow = "inset 0 0 20px red";
+
+            if (piece == "empty") return;
+            if (TURN == 1 && piece[0] == 'b') return;
+            if (TURN == 0 && piece[0] == 'w') return;
+
+            backup_item = piece + ".png";
+            backup_pos = posit;
+
+            piece = piece.substring(2);
+            if (piece == "queen") {
+                extend_up(posit - 8, col);
+                extend_down(posit + 8, col);
+                extend_right(posit + 1, col);
+                extend_left(posit - 1, col);
+
+                extend_upright(posit - 7, col);
+                extend_upleft(posit - 9, col);
+                extend_downleft(posit + 7, col);
+                extend_downright(posit + 9, col);
+
+            }
+            else if (piece == "king") {
+
+                extend_up(posit - 8, col, 1);
+                extend_down(posit + 8, col, 1);
+                extend_right(posit + 1, col, 1);
+                extend_left(posit - 1, col, 1);
+
+                extend_upright(posit - 7, col, 1);
+                extend_upleft(posit - 9, col, 1);
+                extend_downleft(posit + 7, col, 1);
+                extend_downright(posit + 9, col, 1);
+
+
+                if (CHK == posit) return;
+                if (col == 'w') {
+                    if (moved_60) return;
+
+                    if ((!moved_63) && verify(61, 62, col)) {
+
+                        grids[62].src = "circle.png";
+                    }
+                    if ((!moved_56) && verify(57, 59, col)) {
+
+                        grids[58].src = "circle.png";
+                    }
+                    wking_pos = posit;
+                }
+                else {
+                    if (moved_4) return;
+
+                    if ((!moved_0) && verify(1, 3, col)) {
+
+                        grids[2].src = "circle.png";
+
+                    }
+                    if ((!moved_7) && verify(5, 6, col)) {
+
+                        grids[6].src = "circle.png";
+
+                    }
+                    bking_pos = posit;
+                }
+
+            }
+            else if (piece == "rook") {
+                extend_up(posit - 8, col);
+                extend_down(posit + 8, col);
+                extend_right(posit + 1, col);
+                extend_left(posit - 1, col);
+
+            }
+
+
+            else if (piece == "knight") {
+                extend_horse(posit, col);
+            }
+            else if (piece == "bishop") {
+                extend_upright(posit - 7, col);
+                extend_upleft(posit - 9, col);
+                extend_downleft(posit + 7, col);
+                extend_downright(posit + 9, col);
+
+            }
+            else {
+                if (TURN == 1) {
+                    if ((posit - 9) >= 0 && (posit - 9) % 8 != 7 && source(grids[posit - 9].src)[0] == 'b') {
+                        if (test(posit, posit - 9, col)) grid_span[posit - 9].style.boxShadow = "inset 0 0 10px red";
+                    }
+                    if ((posit - 7) >= 0 && (posit - 7) % 8 != 0 && source(grids[posit - 7].src)[0] == 'b') {
+                        if (test(posit, posit - 7, col)) grid_span[posit - 7].style.boxShadow = "inset 0 0 10px red";
+                    }
+                    if (source(grids[posit - 8].src) == "empty") {
+                        if (test(posit, posit - 8, col)) grids[posit - 8].src = "circle.png";
+                    }
+                    else return;
+
+                    if (posit >= 48 && posit < 56 && source(grids[posit - 16].src) == "empty") {
+                        if (test(posit, posit - 16, col)) grids[posit - 16].src = "circle.png";
+                    }
+                }
+                else {
+                    if ((posit + 9) <= 63 && (posit + 9) % 8 != 0 && source(grids[posit + 9].src)[0] == 'w') {
+                        if (test(posit, posit + 9, col)) grid_span[posit + 9].style.boxShadow = "inset 0 0 10px red";
+                    }
+                    if ((posit + 7) <= 63 && (posit + 7) % 8 != 7 && source(grids[posit + 7].src)[0] == 'w') {
+                        if (test(posit, posit + 7, col)) grid_span[posit + 7].style.boxShadow = "inset 0 0 10px red";
+                    }
+                    if (source(grids[posit + 8].src) == "empty") {
+                        if (test(posit, posit + 8, col)) grids[posit + 8].src = "circle.png";
+                    }
+                    else return;
+
+                    if (posit >= 8 && posit < 16 && source(grids[posit + 16].src) == "empty") {
+                        if (test(posit, posit + 16, col)) grids[posit + 16].src = "circle.png";
+                    }
+                }
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
